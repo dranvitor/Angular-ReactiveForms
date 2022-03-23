@@ -2,7 +2,7 @@
 
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Cadastre-se</mat-card-title>
+      <mat-card-title>Reactive Form</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <form 
@@ -112,7 +112,7 @@
           <mat-form-field appearance="fill" class="grow">
             <mat-label>Senha</mat-label>
             <input 
-            type="text" 
+            type="password" 
             matInput 
             placeholder="Digite a sua senha..."
             formControlName="password"       
@@ -129,18 +129,18 @@
           <mat-form-field appearance="fill" class="grow">
             <mat-label>Confirmação de senha</mat-label>
             <input 
-            type="text" 
+            type="password" 
             matInput 
             placeholder="Confirme a sua senha..."
-            formControlName="confirmPassword"       
+            formControlName="confirmPassword"
+            required pattern="{{reactiveData.value.password}}"       
             >
-         <mat-error>
-            <span *ngIf="reactiveData.controls['confirmPassword'].getError('required')">Este campo é obrigatorio</span>
-              <span *ngIf="reactiveData.controls['confirmPassword'].getError('minlength')">Faltam caracteres(no mínimo3)
-              </span>
-            </mat-error>
+            <mat-error>
+            <span *ngIf="reactiveData.value.verifyPassword"></span>
+            </mat-error>           
           </mat-form-field>
         </div>
+       
 
         <div class="col">
          <button 
@@ -150,7 +150,8 @@
          class="grow"
          [disabled]="reactiveData.invalid"
          (click)="showDialog()"
-         >Cadastrar</button>
+         >Cadastrar
+        </button>
         </div>
       </form>
     </mat-card-content>
