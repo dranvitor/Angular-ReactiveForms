@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#main-form {
+    width: 500px;
+}
+
+.col {
+    flex-direction: row !important;
+  }
+  .grow {
+    width: 100%;
+  }
