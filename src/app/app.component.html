@@ -136,8 +136,15 @@
             required pattern="{{reactiveData.value.password}}"       
             >
             <mat-error>
-            <span *ngIf="reactiveData.value.verifyPassword"></span>
-            </mat-error>           
+              <span *ngIf="reactiveData.controls['confirmPassword'].getError('required')">Este campo é obrigatorio</span>       
+
+           <!--  <span *ngIf="reactiveData.value.verifyPassword">  Fica vermelho e impede de clicar pra enviar, entretanto não mostra a mensagem.
+            </span> --> 
+
+            <span *ngIf="reactiveData.controls['password'].value != reactiveData.controls['confirmPassword'].value">
+              As senhas são diferentes.Digite a mesma senha.
+            </span>
+            </mat-error>         
           </mat-form-field>
         </div>
        
